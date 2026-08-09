@@ -14,6 +14,7 @@ x-backend-service: &backend-service
     context: .
     dockerfile: Dockerfile
   image: kempen-backend:local
+  pull_policy: build
   environment: *backend-environment
   restart: unless-stopped
 
@@ -155,6 +156,7 @@ services:
         API_INTERNAL_URL: http://api:8000
         NEXT_PUBLIC_DEPLOYMENT_LABEL: ${CAMPAIGN_DEPLOYMENT_LABEL:-Local}
     image: kempen-frontend:local
+    pull_policy: build
     ports:
       - "3000:3000"
     healthcheck:
